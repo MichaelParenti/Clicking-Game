@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #div{
+            text-align: center;
+            width: 300px;
+            height: 300px;
+            background: black;
+            color: white;
+        }
+        #container{
+            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click inside the box as many times as you can in one minute.</h1>
+
+    <br>
+    
+    <div id="container">
+        <h2>Time:</h2><span>60</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <h2>Score:</h2><h3>0</h3>
+    </div> 
+
+    <div id="div"></div>
+
+    <script>
+        let div = document.getElementById("div");
+        let score = document.querySelector("h3");
+        let time = document.querySelector("span");
+        var jsTime = 60;
+        var jsScore = 0;
+
+        alert("Click inside the box as many times as you can in one minute. \n Ready?");
+
+        var clicker = div.addEventListener("click", function() {
+            jsScore++;
+            score.innerHTML = jsScore;
+        },1);
+
+        setInterval(function() {
+            if (jsTime > 0){
+                jsTime--;
+                time.innerHTML = jsTime;
+            } else {
+                div.remove();
+            }
+        },1000);
+
+        div.addEventListener('contextmenu', event => event.preventDefault());
+
+    </script>
+</body>
+</html>
